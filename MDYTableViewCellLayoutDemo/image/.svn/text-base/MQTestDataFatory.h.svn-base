@@ -1,0 +1,24 @@
+//
+//  MQTestDataFatory.h
+//  miaoqu_hl
+//
+//  Created by apple on 15/12/1.
+//  Copyright © 2015年 apple. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "MQImageUrlModel.h"
+
+@interface MQTestDataFatory : NSObject
+
++ (NSString *)name;
+
++ (MQImageUrlModel *)image;
+
++ (MQImageUrlModel *)avator;
+
++ (NSNumber *)userId;
+
++ (NSString *)longText;
+
+@end

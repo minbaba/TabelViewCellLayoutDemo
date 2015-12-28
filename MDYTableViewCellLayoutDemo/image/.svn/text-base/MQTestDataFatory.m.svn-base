@@ -1,0 +1,59 @@
+//
+//  MQTestDataFatory.m
+//  miaoqu_hl
+//
+//  Created by apple on 15/12/1.
+//  Copyright © 2015年 apple. All rights reserved.
+//
+
+#import "MQTestDataFatory.h"
+
+@implementation MQTestDataFatory
+
++ (char)anyChar {
+    return 'a' +arc4random() %26;
+}
+
++ (NSString *)name {
+    int lenth = arc4random() %15 +5;
+    NSMutableString *mStr = [NSMutableString string];
+    for (int i = 0; i < lenth; i++) {
+        [mStr appendFormat:@"%c", [self anyChar]];
+    }
+    
+    return mStr;
+}
+
++ (MQImageUrlModel *)image {
+    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"t_image_%02d", (arc4random() %6) +1] ofType:@"jpg"]];
+    MQImageUrlModel *model = [[MQImageUrlModel alloc] init];
+    model.littleUrl = [url absoluteString];
+    model.HQUrl = [url absoluteString];
+    
+    return model;
+}
+
++ (MQImageUrlModel *)avator {
+    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"avator_%d", (arc4random() %4) +1] ofType:@"jpg"]];
+    MQImageUrlModel *model = [[MQImageUrlModel alloc] init];
+    model.littleUrl = [url absoluteString];
+    model.HQUrl = [url absoluteString];
+    
+    return model;
+}
+
++ (NSNumber *)userId {
+    return [NSNumber numberWithInteger:arc4random() % 10000000];
+}
+
++ (NSString *)longText {
+    int lenth = arc4random() %40 +40;
+    NSMutableString *mStr = [NSMutableString string];
+    for (int i = 0; i < lenth; i++) {
+        [mStr appendFormat:@"%c", [self anyChar]];
+    }
+    
+    return [mStr copy];
+}
+
+@end
