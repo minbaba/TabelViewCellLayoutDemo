@@ -76,8 +76,11 @@
             [layoutArr addObject:layout];
         }
         
-        // 刷新数据
-        [listTb reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            // 刷新数据
+            [listTb reloadData];
+        });
         
     });
 }
